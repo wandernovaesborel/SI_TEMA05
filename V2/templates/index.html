@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Sentimentos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Análise de Sentimentos</h1>
+        <form action="/analise-sentimento" method="post">
+            <textarea name="texto" placeholder="Insira o texto aqui"></textarea>
+            <button type="submit">Analisar Sentimento</button>
+        </form>
+        <h2>Adicionar Palavra</h2>
+        <form action="/adicionar-palavra" method="post">
+            <label for="palavra">Palavra:</label>
+            <input type="text" name="palavra" id="palavra" required>
+            <label for="tipo">Tipo:</label>
+            <select name="tipo" id="tipo" required>
+                <option value="positiva">Positiva</option>
+                <option value="negativa">Negativa</option>
+            </select>
+            <label for="peso">Peso:</label>
+            <input type="number" name="peso" id="peso" required>
+            <button type="submit">Adicionar Palavra</button>
+        </form>
+    </div>
+</body>
+</html>

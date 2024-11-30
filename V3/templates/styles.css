@@ -1,0 +1,14 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+textarea, input[type="text"], select, button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 5px 10px;
+}

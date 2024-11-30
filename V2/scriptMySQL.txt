@@ -1,0 +1,17 @@
+-- Criar o banco de dados 'mypy2'
+CREATE DATABASE IF NOT EXISTS mypy2;
+
+-- Usar o banco de dados 'mypy2'
+USE mypy2;
+
+CREATE TABLE palavras_positivas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    palavra VARCHAR(255) NOT NULL,
+    peso INT NOT NULL
+);
+
+CREATE TABLE palavras_negativas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    palavra VARCHAR(255) NOT NULL,
+    peso INT NOT NULL
+);

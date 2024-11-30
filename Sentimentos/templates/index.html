@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Sentimento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Carregando Chart.js -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Análise de Sentimento de Comentários</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="comentario">Digite seu comentário:</label>
+                <textarea class="form-control" id="comentario" name="comentario" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Analisar</button>
+        </form>
+
+        <h2 class="mt-5">Filtrar por Sentimento</h2>
+        <div class="btn-group">
+            <a href="/" class="btn btn-secondary">Todos</a>
+            <a href="/?filtro=Positivo" class="btn btn-success">Positivo</a>
+            <a href="/?filtro=Negativo" class="btn btn-danger">Negativo</a>
+            <a href="/?filtro=Neutro" class="btn btn-warning">Neutro</a>
+        </div>
+
+        <h2 class="mt-5">Comentários Analisados</h2>
+        <ul class="list-group">
+            {% for comentario in comentarios %}
+            <li class="list-group-item">
+                <strong>Comentário:</strong> {{ comentario.texto }} <br>
+                <strong>Sentimento:</strong> {{ comentario.sentimento }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2 class="mt-5">Gráfico de Sentimentos</h2>
+        <canvas id="sentimentChart" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        fetch('/chart-data')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('sentimentChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Positivo', 'Negativo', 'Neutro'],
+                        datasets: [{
+                            label: 'Sentimentos',
+                            data: [data.positivo, data.negativo, data.neutro],
+                            backgroundColor: ['#28a745', '#dc3545', '#ffc107']
+                        }]
+                    }
+                });
+            });
+    </script>
+</body>
+</html>

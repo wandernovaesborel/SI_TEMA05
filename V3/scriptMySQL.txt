@@ -1,0 +1,24 @@
+-- Criar o banco de dados 'mypy3'
+CREATE DATABASE IF NOT EXISTS mypy3;
+
+-- Usar o banco de dados 'mypy3'
+USE mypy3;
+
+CREATE TABLE palavras_positivas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    palavra VARCHAR(255) NOT NULL,
+    peso INT NOT NULL
+);
+
+CREATE TABLE palavras_negativas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    palavra VARCHAR(255) NOT NULL,
+    peso INT NOT NULL
+);
+
+CREATE TABLE expressoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    expressao VARCHAR(255),
+    peso INT,
+    tipo VARCHAR(10)
+);
